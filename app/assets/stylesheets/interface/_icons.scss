@@ -6,7 +6,11 @@ i {
   font-size: 1rem;
   color: $icon-color;
 
-  &:hover {
-    color: $icon-color-hover;
+//  &:hover {
+//    color: $icon-color-hover;
+//  }
+
+  &.filled {
+    color: gold;
   }
 }

@@ -1,0 +1,15 @@
+= simple_form_for(@rating) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :game, collection: Game.all, include_blank: 'Select a game...'
+    = f.hidden_field :rating
+
+  .game-info
+    = render 'game_info'
+
+  .form-actions
+    = f.button :submit
+
+:javascript
+  window.newRating = new NewRating();

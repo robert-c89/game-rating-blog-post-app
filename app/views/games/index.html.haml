@@ -1,0 +1,37 @@
+= content_for :section_title do
+  %h1 Listing&nbsp;Games
+
+.index-container
+  - @games.each do |game|
+    .list-item
+      %ul.inline-list
+
+        %li
+          = game.name
+
+        %li
+          = game.publisher
+
+        %li
+          = game.release_date
+
+        %li
+          - if game.ratings.blank?
+            %span Game not yet rated
+          - else
+            - full_rating = 5
+            - game_rating = game.ratings.average(:rating).round
+            - game_rating.times do
+              %i.fa.fa-star.filled
+            - (full_rating - game_rating).times do
+              %i.fa.fa-star
+
+        %ul.inline-list.right
+          %li
+            = link_to 'Show', game
+          %li
+            = link_to content_tag(:i,nil, :class=> 'fa fa-pencil'), edit_game_path(game)
+          %li
+            = link_to content_tag(:i,nil, :class=> 'fa fa-times'), game, method: :delete, data: { confirm: 'Are you sure?' }
+
+  = link_to 'New Game', new_game_path, class: 'button right'

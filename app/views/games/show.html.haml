@@ -1,0 +1,32 @@
+= content_for :section_title do
+  %h1 Show&nbsp;Game
+
+.row
+  .show-container
+    .large-12.columns
+    
+      %p
+        %b Name
+        = @game.name
+    
+      %p
+        %b Publisher
+        = @game.publisher
+    
+      %p
+        %b Release date
+        = @game.release_date
+
+      %p
+        %b Rating
+        - if @game.ratings.blank?
+          %span Game not yet rated
+        - else
+          - full_rating = 5
+          - game_rating = @game.ratings.average(:rating).round
+          - game_rating.times do
+            %i.fa.fa-star.filled
+          - (full_rating - game_rating).times do
+            %i.fa.fa-star
+
+      = link_to 'Edit', edit_game_path(@game),  class: 'button right'

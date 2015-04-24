@@ -1,0 +1,12 @@
+- unless @game.blank?
+  %ul
+    %li= @game.name
+    %li= @game.publisher
+    %li= @game.release_date
+
+  .rating
+    %i.fa.fa-star{data: {rating: 1}}
+    %i.fa.fa-star{data: {rating: 2}}
+    %i.fa.fa-star{data: {rating: 3}}
+    %i.fa.fa-star{data: {rating: 4}}
+    %i.fa.fa-star{data: {rating: 5}}
